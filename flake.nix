@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "A website backend I'm making - no clue what for yet though.";
   inputs = {
     pkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
