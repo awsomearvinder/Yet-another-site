@@ -27,6 +27,13 @@ async fn async_main() -> io::Result<()> {
 }
 
 fn main() {
+    // I'm not a fan of #[actix_web::main] and the like 
+    // They've always never interacted well for me with rust-analyzer
+    // Reason being, whenever there's an error rust-analyzer seems to fail to parse 
+    // sometimes that async fn main *is* the main function, and complains that there
+    // is no main function, while highlighting the entire async fn main as an error.
+    // This dosen't always happen - but just not using the proc macro is easier.
+    // The code without it is fairly easy to understand anyways.
     actix_web::rt::System::new("")
         .block_on(async { async_main().await })
         .unwrap_or_else(|e| eprintln!("Got error: {} while running main.", e));
