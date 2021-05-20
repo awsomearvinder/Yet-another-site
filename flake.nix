@@ -18,7 +18,7 @@
           pkgsLegacyPackages.pkg-config
         ];
         RUST_SRC_PATH =
-          "${unstable.rust.packages.stable.rustPlatform.rustLibSrc}";
+          "${unstableLegacyPackages.rust.packages.stable.rustPlatform.rustLibSrc}";
       in {
         defaultPackage = naersk.lib."${system}".buildPackage {
           pname = "website-backend";
@@ -27,7 +27,7 @@
           nativeBuildInputs = runtimeDeps;
         };
 
-        devShell."${system}" = pkgsLegacyPackages.mkShell {
+        devShell = pkgsLegacyPackages.mkShell {
           nativeBuildInputs = compileDeps ++ [ pkgsLegacyPackages.rust-analyzer ];
           buildInputs = runtimeDeps;
           inherit RUST_SRC_PATH;
