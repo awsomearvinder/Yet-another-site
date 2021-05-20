@@ -28,7 +28,7 @@
 
         devShell = pkgsLegacyPackages.mkShell {
           nativeBuildInputs = compileDeps
-            ++ [ pkgsLegacyPackages.rust-analyzer ];
+            ++ [ pkgsLegacyPackages.rust-analyzer pkgsLegacyPackages.rustfmt ];
           buildInputs = runtimeDeps;
           inherit RUST_SRC_PATH;
         };
