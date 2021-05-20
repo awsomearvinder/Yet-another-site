@@ -12,11 +12,10 @@
       let
         pkgsLegacyPackages = pkgs.legacyPackages."${system}";
         unstableLegacyPackages = unstable.legacyPackages."${system}";
-        compileDeps = [ unstableLegacyPackages.cargo unstableLegacyPackages.rustc ];
-        runtimeDeps = [ 
-          pkgsLegacyPackages.openssl 
-          pkgsLegacyPackages.pkg-config
-        ];
+        compileDeps =
+          [ unstableLegacyPackages.cargo unstableLegacyPackages.rustc ];
+        runtimeDeps =
+          [ pkgsLegacyPackages.openssl pkgsLegacyPackages.pkg-config ];
         RUST_SRC_PATH =
           "${unstableLegacyPackages.rust.packages.stable.rustPlatform.rustLibSrc}";
       in {
@@ -28,7 +27,8 @@
         };
 
         devShell = pkgsLegacyPackages.mkShell {
-          nativeBuildInputs = compileDeps ++ [ pkgsLegacyPackages.rust-analyzer ];
+          nativeBuildInputs = compileDeps
+            ++ [ pkgsLegacyPackages.rust-analyzer ];
           buildInputs = runtimeDeps;
           inherit RUST_SRC_PATH;
         };
