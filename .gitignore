@@ -1,2 +1,4 @@
 /target
 result/
+# no .pem's should be in the local directory anyways, but just in case.
+*.pem
