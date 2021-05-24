@@ -1,0 +1,3 @@
+[submodule "test_registry"]
+	path = test_registry
+	url = git@github.com:awsomearvinder/test_registry.git
